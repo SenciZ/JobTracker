@@ -1,1 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.mainContainer{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+.jobAddPanel{
+    background-color: rgb(55, 0, 55);
+    padding: 10px;
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.appLogo{
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fefefe;
+    font-size: 40px;
+}
+
+.jobForm{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.jobListPanel{
+    background-color: hsl(39, 46%, 86%);
+    width: 100%;
+}
+
+.jobForm input, textarea{
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 5px;
+    border: hidden;
+    color: rgb(53, 53, 53);
+    background-color: hsl(39, 46%, 86%);
+}
+
+.jobForm label{
+    margin-top: 30px;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: rgb(180, 146, 180);
+}
+
+.addJobToList{
+    background-color: rgb(255, 145, 0);
+    padding: 10px 40px;
+    margin-top: 50px;
+    border-radius: 8px;
+    border: hidden;
+}
+
+.jobDescription{
+    padding: 5px;
+}
+
+input:focus{
+    border: 1px solid hsl(303, 100%, 50%);
+    outline: none;
+    /* outline: 1px solid hsl(303, 100%, 50%); */
+}

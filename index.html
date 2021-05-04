@@ -1,1 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Document</title>
+</head>
+<body>
+    <main class="mainContainer">
+        <section class="jobAddPanel">
+            <h1 class="appLogo">JOB LIST</h1>
+            <form action="" class="jobForm">
+                <label for="jobName">Job Name:</label><input type="text" class="jobName">
+                <label for="jobPo">Job PO:</label><input type="text" class="jobPO">
+                <label for="poRecieved">PO Recieved:</label><input type="date" class="poRecieved">
+                <label for="artRecieved">Art Recieved:</label><input type="date" class="artRecieved">
+                <label for="garmentsRecieved">Garments Recieved:</label><input type="date" class="garmentsRecieved">
+                <label for="dueDate">Due Date:</label><input type="date" class="dueDate">
+                <label for="jobDescription">Job Description:</label><textarea class="jobDescription" name="JobDescription" cols="20" rows="5" placeholder="Enter job description here.."></textarea>
 
+                <button class="addJobToList">Add Job To List</button>
+
+            </form>
+        </section>
+        <section class="jobListPanel"><h1>JOBS:</h1></section>
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
