@@ -3,10 +3,14 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body{
+    height: 100%;
+}
 .mainContainer{
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    min-height: 100vh;
 }
 .jobAddPanel{
     background-color: rgb(55, 0, 55);
@@ -14,7 +18,7 @@
     width: 360px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
 }
 
@@ -32,8 +36,12 @@
 }
 
 .jobListPanel{
+    display: flex;
+    flex-direction: column;
     background-color: hsl(39, 46%, 86%);
     width: 100%;
+    /* justify-content: center; */
+    align-items: center;
 }
 
 .jobForm input, textarea{
@@ -70,4 +78,32 @@ input:focus{
     border: 1px solid hsl(303, 100%, 50%);
     outline: none;
     /* outline: 1px solid hsl(303, 100%, 50%); */
+}
+
+.job{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: seashell;
+    color: rgb(55, 0, 55);
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgb(55, 0, 55);
+    border-bottom: 1px solid rgb(55, 0, 55);
+    max-width:  90%;
+    min-width: 80%;
+    padding: 5px 20px;
+    margin-top: 10px;
+}
+.jobHeader{
+    display: flex;
+    justify-content: space-between;
+}
+
+.jobDates{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.jobDescriptions{
+    padding-top: 5px;
 }
