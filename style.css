@@ -107,3 +107,24 @@ input:focus{
 .jobDescriptions{
     padding-top: 5px;
 }
+
+.logoContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+.gearIcon{
+    width: 18%;
+    padding-right: 5px;
+    animation-name: gearRotate;
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+
+}
+
+@keyframes gearRotate {
+   100% {transform: rotate(360deg)}
+}
