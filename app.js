@@ -1,3 +1,31 @@
+// Storage Controller
+const StorageCtrl = (function () {
+  const storeItem = function (item) {
+    let items;
+    if (localStorage.getItem("items") === null) {
+      items = [];
+      items.push(item);
+      localStorage.setItem("items", JSON.stringify(items));
+    } else {
+      items = JSON.parse(localStorage.getItem("items"));
+      items.push(item);
+      localStorage.setItem("items", JSON.stringify(items));
+    }
+  };
+
+  const getItem = function () {
+    let items;
+    if (localStorage.getItem("items") === null) {
+      items = [];
+    } else {
+      items = JSON.parse(localStorage.getItem("items"));
+    }
+    return items;
+  };
+
+  return { storeItem, getItem };
+})();
+
 const UICtrl = (function () {
   let jobName = document.querySelector(".jobName");
   let jobPo = document.querySelector(".jobPo");
@@ -12,26 +40,25 @@ const UICtrl = (function () {
   addBtn.addEventListener("click", function () {
     console.log("Clciked");
     event.preventDefault();
-    DataCtrl.jobList.push(
-      DataCtrl.newJob(
-        jobName.value,
-        jobPo.value,
-        poReceived.value,
-        artReceived.value,
-        garmentsReceived.value,
-        dueDate.value,
-        jobDescription.value
-      )
+    const jobE = DataCtrl.newJob(
+      jobName.value,
+      jobPo.value,
+      poReceived.value,
+      artReceived.value,
+      garmentsReceived.value,
+      dueDate.value,
+      jobDescription.value
     );
+    DataCtrl.jobList.push(jobE);
+    StorageCtrl.storeItem(jobE);
     UICtrl.addJobsToPage();
-        jobName.value="";
-        jobPo.value="";
-        poReceived.value="";
-        artReceived.value="";
-        garmentsReceived.value="";
-        dueDate.value="";
-        jobDescription.value="";
-
+    jobName.value = "";
+    jobPo.value = "";
+    poReceived.value = "";
+    artReceived.value = "";
+    garmentsReceived.value = "";
+    dueDate.value = "";
+    jobDescription.value = "";
   });
 
   const addJobsToPage = function () {
@@ -66,22 +93,25 @@ const UICtrl = (function () {
 
       const receivedPO = document.createElement("h4");
       receivedPO.classList.add("ReceivedPO");
-      receivedPO.textContent = "PO Received On: " + DataCtrl.jobList[i].poReceived;;
+      receivedPO.textContent =
+        "PO Received On: " + DataCtrl.jobList[i].poReceived;
       jobDates.appendChild(receivedPO);
 
       const receivedArt = document.createElement("h4");
       receivedArt.classList.add("ReceivedArt");
-      receivedArt.textContent = "Art Received On: " + DataCtrl.jobList[i].artReceived;
+      receivedArt.textContent =
+        "Art Received On: " + DataCtrl.jobList[i].artReceived;
       jobDates.appendChild(receivedArt);
 
       const receivedGarments = document.createElement("h4");
       receivedGarments.classList.add("ReceivedGarments");
-      receivedGarments.textContent = "Garments Received On: " + DataCtrl.jobList[i].garmentsReceived;
+      receivedGarments.textContent =
+        "Garments Received On: " + DataCtrl.jobList[i].garmentsReceived;
       jobDates.appendChild(receivedGarments);
 
       const dueOn = document.createElement("h4");
       dueOn.classList.add("DueOn");
-      dueOn.textContent = "Due On: "+ DataCtrl.jobList[i].dueDate;
+      dueOn.textContent = "Due On: " + DataCtrl.jobList[i].dueDate;
       jobDates.appendChild(dueOn);
 
       const descriptionOfJob = document.createElement("div");
@@ -108,7 +138,7 @@ const UICtrl = (function () {
 })();
 
 const DataCtrl = (function () {
-  const jobList = [];
+  const jobList = StorageCtrl.getItem();
   const newJob = function (
     name,
     PO,
@@ -135,49 +165,4 @@ const DataCtrl = (function () {
   };
 })();
 
-// function addBooksToPage() {
-//   if (bookContainer.firstChild) {
-//     while (bookContainer.firstChild) {
-//       bookContainer.removeChild(bookContainer.firstChild);
-//     }
-//   }
-//   for (let i = 0; i < myLibrary.length; i++) {
-//     const bookContainer = document.getElementById("bookContainer");
-//     const bookDiv = document.createElement("div");
-//     bookDiv.classList.add("book");
-//     bookDiv.setAttribute("id", i);
-//     bookContainer.appendChild(bookDiv);
-
-//     const bookTitleInDiv = document.createElement("h1");
-//     bookTitleInDiv.classList.add("titleOfBook");
-//     bookTitleInDiv.textContent = myLibrary[i].title;
-//     bookDiv.appendChild(bookTitleInDiv);
-
-//     const bookAuthorInDiv = document.createElement("h2");
-//     bookAuthorInDiv.classList.add("authorOfBook");
-//     bookAuthorInDiv.textContent = myLibrary[i].author;
-//     bookDiv.appendChild(bookAuthorInDiv);
-
-//     const bookPagesInDiv = document.createElement("h2");
-//     bookPagesInDiv.classList.add("numberOfPages");
-//     bookPagesInDiv.textContent = myLibrary[i].pages;
-//     bookDiv.appendChild(bookPagesInDiv);
-
-//     const readStatus = document.createElement("input", "checkbox");
-//     readStatus.setAttribute("type", "checkbox");
-//     readStatus.setAttribute("id", i);
-//     readStatus.checked = myLibrary[i].status;
-//     readStatus.addEventListener("change", () => {
-//       myLibrary[i].statusChange(i);
-//     });
-//     bookDiv.appendChild(readStatus);
-
-//     const removeButton = document.createElement("button");
-//     removeButton.classList.add("removeBtn");
-//     removeButton.textContent = "Remove Book";
-//     removeButton.addEventListener("click", () => {
-//       myLibrary.splice(`${bookDiv.id}`, 1);
-//       addBooksToPage();
-//     });
-//     bookDiv.appendChild(removeButton);
-//   }
+UICtrl.addJobsToPage();
