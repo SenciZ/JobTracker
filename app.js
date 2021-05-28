@@ -71,8 +71,11 @@ const UICtrl = (function () {
       const jobDiv = document.createElement("div");
       jobDiv.classList.add("job");
       jobDiv.setAttribute("id", i);
-      jobContainer.appendChild(jobDiv);
-
+      if (!jobContainer.firstChild) {
+        jobContainer.appendChild(jobDiv);
+      } else {
+        jobContainer.insertBefore(jobDiv, jobContainer.firstChild);
+      }
       const jobHeader = document.createElement("div");
       jobHeader.classList.add("jobHeader");
       jobDiv.appendChild(jobHeader);
