@@ -146,7 +146,7 @@ const DataCtrl = (function () {
     name,
     PO,
     poReceived,
-    artRecieved,
+    artReceived,
     garmentsReceived,
     dueDate,
     description
@@ -155,7 +155,7 @@ const DataCtrl = (function () {
       name,
       PO,
       poReceived,
-      artRecieved,
+      artReceived,
       garmentsReceived,
       dueDate,
       description,
