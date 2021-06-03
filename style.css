@@ -44,9 +44,13 @@ body {
   background: linear-gradient(#fdfdfd, #c7c7c7);
   width: 100%;
   /* justify-content: center; */
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-content: flex-start;
   font-family: "Montserrat", sans-serif;
+  padding-left: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .jobForm input,
@@ -94,9 +98,10 @@ input:focus {
   flex-direction: column;
   /* border: 1px solid rgb(75, 75, 75); */
   border-radius: 5px;
-  max-width: 40%;
-  min-width: 30%;
-  min-height: 150px;
+  max-width: 400px;
+  min-width: 400px;
+  min-height: 250px;
+  max-height: 250px;
   padding: 5px 20px;
   margin: 10px 20px;
 }
@@ -119,12 +124,18 @@ input:focus {
 }
 
 .jobDescriptions {
-  display: flex;
-  flex-direction: column;
   font-weight: 400;
   padding: 5px;
-  max-width: 100%;
+  /* max-width: 90%; */
   margin-top: 10px;
+  max-height: 25%;
+  overflow-x: hidden;
+
+
+}
+
+.description {
+  overflow-x: hidden;
 }
 
 .logoContainer {
