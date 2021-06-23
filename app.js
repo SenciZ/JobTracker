@@ -11,6 +11,7 @@ const StorageCtrl = (function () {
       items.push(item);
       localStorage.setItem("items", JSON.stringify(items));
     }
+    return items;
   };
 
   const getItem = function () {
@@ -23,7 +24,11 @@ const StorageCtrl = (function () {
     return items;
   };
 
-  return { storeItem, getItem };
+  const deleteItemFromStorage = function(newList){
+    localStorage.setItem("items", JSON.stringify(newList));
+  }
+
+  return { storeItem, getItem, deleteItemFromStorage};
 })();
 
 const UICtrl = (function () {
@@ -120,6 +125,17 @@ const UICtrl = (function () {
       const descriptionOfJob = document.createElement("div");
       descriptionOfJob.classList.add("jobDescriptions");
       jobDiv.appendChild(descriptionOfJob);
+
+      const deleteBtn = document.createElement("button");
+      deleteBtn.classList.add("deleteBtn");
+      deleteBtn.textContent="x";
+      deleteBtn.addEventListener("click", function(e){
+      DataCtrl.jobList.splice(e.target.id,1);
+      StorageCtrl.deleteItemFromStorage(DataCtrl.jobList)
+      UICtrl.addJobsToPage();
+      });
+
+      jobDiv.appendChild(deleteBtn);
 
       const descriptionText = document.createElement("p");
       descriptionText.classList.add("description");
