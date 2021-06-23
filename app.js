@@ -130,7 +130,7 @@ const UICtrl = (function () {
       deleteBtn.classList.add("deleteBtn");
       deleteBtn.textContent="x";
       deleteBtn.addEventListener("click", function(e){
-      DataCtrl.jobList.splice(e.target.id,1);
+      DataCtrl.jobList.splice(this.parentNode.id,1);
       StorageCtrl.deleteItemFromStorage(DataCtrl.jobList)
       UICtrl.addJobsToPage();
       });
